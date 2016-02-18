@@ -10,6 +10,13 @@ class Utils
 		# code...
 	}
 
+	/**
+	 * creao un archivo de log o agrega una linea a uno ya existente
+	 * la linea contiene la hora y fecha del servidor y el valor pasado por parametro
+	 *
+	 * @param $valor string
+	 * @return void
+	 */
 	static function simple_log($valor){
 		if(!file_exists('log')){
 			mkdir('log', 0777);
@@ -21,6 +28,13 @@ class Utils
 	    file_put_contents($fichero, "{$hora} {$valor}". PHP_EOL, FILE_APPEND);	
 	}
 
+	/**
+	 * verifica si el parametro rut es valido
+	 * en formato 99.999.999-A, 99999999-A o 99999999A 
+	 *
+	 * @param $rut string
+	 * @return boolean
+	 */
 	static function validaRut($rut){
 	    $temp_rut = str_replace(".", "",trim($rut));
 	    $RUT = explode("-", $temp_rut);
